@@ -46,6 +46,7 @@ public class RedisBloomFilter {
       for (long index : hashIndex) {
         connection.setBit(bloomFilterKey.getBytes(StandardCharsets.UTF_8), index, true);
       }
+      connection.close();
       return null;
     });
 
@@ -58,6 +59,7 @@ public class RedisBloomFilter {
       for (long index : hashIndex) {
         connection.getBit(bloomFilterKey.getBytes(StandardCharsets.UTF_8), index);
       }
+      connection.close();
       return null;
     });
 
